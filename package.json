@@ -4,8 +4,9 @@
   "description": "An application for managing project",
   "main": "app/index.js",
   "scripts": {
-    "start": "concurrently \"cross-env BROWSER=none yarn start:react\" \"wait-on http://localhost:3000 && electron app\"",
-    "start:react": "react-app-rewired start",
+    "start": "concurrently \"yarn start:react\" \"yarn start:electron\"",
+    "start:react": "cross-env BROWSER=none react-app-rewired start",
+    "start:electron": "wait-on http://localhost:1314 && electron app",
     "build": "yarn build:react-copy && yarn pack:electron",
     "build:react": "react-app-rewired build",
     "build:react-copy": "yarn build:react && yarn copy:electron",
@@ -23,21 +24,35 @@
     "name": "Jerry Shen",
     "email": "shenjingwei@medlinker.com"
   },
+  "dependencies": {
+    "@material-ui/core": "^1.2.2",
+    "@material-ui/icons": "^1.1.0",
+    "@reach/router": "^1.1.1",
+    "@rematch/core": "^0.6.0",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "electron-is-dev": "^0.3.0",
+    "electron-store": "^2.0.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "styled-components": "^3.3.2"
+  },
   "license": "MIT",
   "devDependencies": {
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "concurrently": "^3.5.1",
     "cross-env": "^5.2.0",
+    "devtron": "^1.4.0",
     "electron": "^2.0.2",
     "electron-builder": "^20.15.1",
+    "electron-debug": "^2.0.0",
+    "electron-devtools-installer": "^2.2.4",
     "react-app-rewired": "^1.5.2",
     "react-scripts": "^1.1.4",
     "wait-on": "^2.1.0"
-  },
-  "dependencies": {
-    "electron-better-ipc": "^0.1.1",
-    "electron-is-dev": "^0.3.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
   },
   "build": {
     "productName": "Proger",

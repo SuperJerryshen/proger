@@ -1,35 +1,17 @@
-const path = require('path');
 const { app, BrowserWindow, Menu } = require('electron');
-const isDev = require('electron-is-dev');
 const ipc = require('electron-better-ipc');
-
+const { isDev, appUrl } = require('./libs/constant');
 const buildMenu = require('./menu');
+const createWindow = require('./libs/createWindow');
+/**
+ * 配置ipc
+ */
+require('./ipc')();
 
 /**
- * 配置载入路径
- * todo 配置打包的url
+ * 调试相关
  */
-const devUrl = 'http://localhost:3000';
-const localUrl = `file://${path.join(__dirname, '../build/index.html')}`;
-const appUrl = isDev ? devUrl : localUrl;
-
-/**
- * 创建全局窗口对象
- */
-let mainWindow;
-
-/**
- * 新建窗口
- */
-function createWindow() {
-  mainWindow = new BrowserWindow({ width: 800, height: 600 });
-  mainWindow.loadURL(appUrl);
-  isDev && mainWindow.webContents.openDevTools();
-  mainWindow.on('closed', function() {
-    // 关闭后，保留应用在dock栏
-    mainWindow = null;
-  });
-}
+require('electron-debug')({ enabled: true, showDevTools: false });
 
 /**
  * 配置菜单
@@ -47,6 +29,21 @@ function createMenu() {
 }
 
 /**
+ * 安装开发工具
+ */
+function createDevTools() {
+  const {
+    default: installExtension,
+    REACT_DEVELOPER_TOOLS,
+    REDUX_DEVTOOLS,
+  } = require('electron-devtools-installer');
+  const devtronExtension = require('devtron');
+  devtronExtension.install();
+  installExtension(REACT_DEVELOPER_TOOLS);
+  installExtension(REDUX_DEVTOOLS);
+}
+
+/**
  * 配置主线程响ipc应事件
  */
 function setMainListeners() {
@@ -57,9 +54,10 @@ function setMainListeners() {
  * 应用监听事件
  */
 app.on('ready', () => {
-  createWindow();
+  createWindow({ url: appUrl, isGlobal: true });
   setMainListeners();
   createMenu();
+  createDevTools();
 });
 
 app.on('window-all-closed', function() {
@@ -70,6 +68,6 @@ app.on('window-all-closed', function() {
 
 app.on('activate', function() {
   if (mainWindow === null) {
-    createWindow();
+    createWindow({ url: appUrl, isGlobal: true });
   }
 });

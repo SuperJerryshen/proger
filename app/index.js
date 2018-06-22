@@ -1,5 +1,4 @@
 const { app, BrowserWindow, Menu } = require('electron');
-const ipc = require('electron-better-ipc');
 const { isDev, appUrl } = require('./libs/constant');
 const buildMenu = require('./menu');
 const createWindow = require('./libs/createWindow');
@@ -54,7 +53,10 @@ function setMainListeners() {
  * 应用监听事件
  */
 app.on('ready', () => {
-  createWindow({ url: appUrl, isGlobal: true });
+  createWindow(
+    { url: appUrl, isGlobal: true },
+    { titleBarStyle: 'hiddenInset', frame: false }
+  );
   setMainListeners();
   createMenu();
   createDevTools();

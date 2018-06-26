@@ -2,6 +2,7 @@ const { app, BrowserWindow, Menu } = require('electron');
 const { isDev, appUrl } = require('./libs/constant');
 const buildMenu = require('./menu');
 const createWindow = require('./libs/createWindow');
+
 /**
  * 配置ipc
  */
@@ -10,7 +11,7 @@ require('./ipc')();
 /**
  * 调试相关
  */
-require('electron-debug')({ enabled: true, showDevTools: false });
+isDev && require('electron-debug')({ enabled: true, showDevTools: false });
 
 /**
  * 配置菜单
@@ -34,12 +35,12 @@ function createDevTools() {
   const {
     default: installExtension,
     REACT_DEVELOPER_TOOLS,
-    REDUX_DEVTOOLS,
+    MOBX_DEVTOOLS,
   } = require('electron-devtools-installer');
   const devtronExtension = require('devtron');
   devtronExtension.install();
   installExtension(REACT_DEVELOPER_TOOLS);
-  installExtension(REDUX_DEVTOOLS);
+  installExtension(MOBX_DEVTOOLS);
 }
 
 /**
@@ -59,7 +60,9 @@ app.on('ready', () => {
   );
   setMainListeners();
   createMenu();
-  createDevTools();
+  if (isDev) {
+    createDevTools();
+  }
 });
 
 app.on('window-all-closed', function() {
@@ -70,6 +73,9 @@ app.on('window-all-closed', function() {
 
 app.on('activate', function() {
   if (mainWindow === null) {
-    createWindow({ url: appUrl, isGlobal: true });
+    createWindow(
+      { url: appUrl, isGlobal: true },
+      { titleBarStyle: 'hiddenInset', frame: false }
+    );
   }
 });

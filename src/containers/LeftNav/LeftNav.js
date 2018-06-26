@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Settings, Home, ChildCare } from '@material-ui/icons';
-import { Tooltip } from '@material-ui/core';
-import { Link } from '@reach/router';
+// import { Tooltip } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import ipc from '../../libs/ipc';
 
 /**
  * 格式化图标组件
- * @param {*} Comp 
- * @param {*} param1 
+ * @param {*} Comp
+ * @param {*} param1
  */
 const styledIcon = (Comp, { title, enterDelay = 1000 }) => {
   const CompWrap = styled.div`

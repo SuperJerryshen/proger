@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import Routes from './routes';
 
 class App extends Component {
+  componentDidCatch(e) {
+    console.log(e);
+  }
+
   render() {
-    return <Routes />;
+    return (
+      <div>
+        <Routes />
+      </div>
+    );
   }
 }
 

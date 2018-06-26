@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router } from '@reach/router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HelloProger from '../components/HelloProger';
 import Home from '../views/Home';
@@ -9,9 +9,11 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <Main path="/">
-          <Home path="/" />
-          <HelloProger path="/hello" />
+        <Main>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/hello" component={HelloProger} />
+          </Switch>
         </Main>
       </Router>
     );

@@ -1,8 +1,9 @@
 // 此组件仅用做测试
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { Face } from '@material-ui/icons';
+import Img from '../Img';
 import styled from 'styled-components';
 import ipc from '../../libs/ipc';
 
@@ -26,7 +27,14 @@ const StyledFace = styled(({ color, ...other }) => <Face {...other} />)`
   color: ${props => props.color};
 `;
 
+const StyledImage = styled(Img)`
+  height: 80px;
+  width: 80px;
+`;
+
 class HelloProger extends Component {
+  state = {};
+
   handleIpcSend = () => {
     ipc.once('get-times-response', (e, obj) => {
       console.log(obj);
@@ -40,12 +48,21 @@ class HelloProger extends Component {
     });
   };
 
+  selectDir = () => {
+    ipc.once('select-dir-response', (e, payload) => {
+      console.log(payload);
+    });
+    ipc.send('select-dir');
+  };
+
   render() {
     const { count, addCount, asyncAddCount } = this.props;
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          {/* <StyledLogo /> */}
+          <StyledImage src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Proger</h1>
         </header>
         <p className="App-intro">现在的数量：{count}</p>
@@ -61,6 +78,9 @@ class HelloProger extends Component {
           <Link to="/">
             <StyledButton>回到主页</StyledButton>
           </Link>
+        </div>
+        <div style={{ marginTop: 16 }}>
+          <StyledButton onClick={this.selectDir}>选择目录</StyledButton>
         </div>
       </div>
     );

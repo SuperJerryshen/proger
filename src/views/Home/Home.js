@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
 import {
   Grid,
-  Card,
   CardContent,
   CardActions,
   Typography,
   Button,
 } from '@material-ui/core';
 import styled from 'styled-components';
+import Card from '../../components/Card';
 
 class Home extends Component {
+  handleClick = (...params) => {
+    console.log(params);
+  };
+
   render() {
-    const BlockDiv = styled.div`
-      height: 1000px;
-      border-radius: 6px;
-      box-shadow: 0 0 8px #999;
-    `;
     return (
-      <div style={{ padding: 16 }}>
+      <div style={{ padding: 32 }}>
         <Grid container spacing={16}>
           <Grid item sm={4}>
             <Card>

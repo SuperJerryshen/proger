@@ -30,6 +30,17 @@ const createMenu = ({
         { role: 'selectall', label: '选中所有 ' },
       ],
     },
+    {
+      label: '帮助',
+      submenu: [
+        {
+          label: '打开开发者工具',
+          click(item, win, event) {
+            win.webContents.openDevTools({ mode: 'right' });
+          },
+        },
+      ],
+    },
   ];
 };
 

@@ -12,8 +12,8 @@ const counter = {
     },
   },
   effects: {
-    async asyncAddCount(payload, state) {
-      await new Promise((resolve, reject) => {
+    async asyncAddCount(payload) {
+      await new Promise((resolve) => {
         setTimeout(() => {
           resolve();
         }, 1000);

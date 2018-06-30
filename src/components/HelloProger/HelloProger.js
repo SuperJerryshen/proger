@@ -23,7 +23,7 @@ const StyledButton = styled(Button)`
   }
 `
 
-const StyledFace = styled(({ color, ...other }) => <Face {...other} />)`
+const StyledFace = styled(props => <Face {...props} />)`
   color: ${props => props.color};
 `
 
@@ -48,7 +48,7 @@ class HelloProger extends Component {
 
   selectDir = () => {
     ipc.once('select-dir-response', (e, payload) => {
-      console.log(payload)
+      window.console.log(payload)
     })
     ipc.send('select-dir')
   }

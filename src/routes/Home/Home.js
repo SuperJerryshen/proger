@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import {
   Grid,
   CardContent,
@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
 } from '@material-ui/core'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 import Card from '../../components/Card'
 import ipc from '../../libs/ipc'

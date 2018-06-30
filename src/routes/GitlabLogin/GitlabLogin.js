@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import Page from '../../components/Page'
 
 class GitlabLogin extends Component {
   render() {
-    return <div />
+    return <Page title="Gitlab登录">Gitlab 登录</Page>
   }
 }
 

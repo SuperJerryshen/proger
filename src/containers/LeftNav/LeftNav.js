@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Settings, Home, ChildCare } from '@material-ui/icons'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import ipc from '../../libs/ipc'
 
@@ -10,7 +10,7 @@ import ipc from '../../libs/ipc'
  * @param {*} Comp
  * @param {*} param1
  */
-const styledIcon = (Comp, { title, enterDelay = 1000 }) => {
+const styledIcon = (Comp, { title, path = '' }) => {
   const CompWrap = styled.div`
     && {
       color: rgb(215, 218, 224);
@@ -73,4 +73,4 @@ class LeftNav extends Component {
   }
 }
 
-export default LeftNav
+export default withRouter(LeftNav)

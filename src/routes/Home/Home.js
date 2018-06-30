@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Grid,
   CardContent,
@@ -7,11 +8,23 @@ import {
   Button,
 } from '@material-ui/core'
 import styled from 'styled-components'
+
 import Card from '../../components/Card'
+import ipc from '../../libs/ipc'
 
 class Home extends Component {
   handleClick = (...params) => {
     console.log(params)
+  }
+
+  openGitlabProject = () => {
+    ipc.send('create-window', {
+      path: '/helper/gitlablogin',
+      config: {
+        width: 800,
+        height: 600,
+      },
+    })
   }
 
   render() {
@@ -60,7 +73,9 @@ class Home extends Component {
                 <Typography component="p">可以下载Gitlab项目</Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">开始</Button>
+                <Button size="small" onClick={this.openGitlabProject}>
+                  开始
+                </Button>
               </CardActions>
             </Card>
           </Grid>

@@ -73,7 +73,7 @@ class HelloProger extends Component {
         <div style={{ marginTop: 16 }}>
           <StyledButton onClick={this.handleIpcSend}>请求主线程</StyledButton>
           <StyledButton onClick={this.openNewWindow}>打开新窗口</StyledButton>
-          <Link to="/">
+          <Link to="/main">
             <StyledButton>回到主页</StyledButton>
           </Link>
         </div>

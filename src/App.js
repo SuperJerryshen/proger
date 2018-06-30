@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
-import Routes from './routes';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import Routes from './routes'
+import createStore from './store'
+
+const store = createStore()
 
 class App extends Component {
-  componentDidCatch(e) {
-    console.log(e);
+  componentDidCatch(...params) {
+    console.error(params)
   }
 
   render() {
     return (
-      <div>
+      <Provider store={store}>
         <Routes />
-      </div>
-    );
+      </Provider>
+    )
   }
 }
 
-export default App;
+export default App

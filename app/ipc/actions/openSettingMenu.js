@@ -1,6 +1,6 @@
-const { forEach } = require('lodash');
-const { Menu, MenuItem, BrowserWindow } = require('electron');
-const { appUrl } = require('../../libs/constant');
+const { forEach } = require('lodash')
+const { Menu, MenuItem, BrowserWindow } = require('electron')
+const { appUrl } = require('../../libs/constant')
 
 const configs = [
   {
@@ -10,17 +10,17 @@ const configs = [
   {
     label: '重新加载',
     click(item, win, event) {
-      win.loadURL(appUrl);
+      win.loadURL(appUrl)
     },
   },
-];
+]
 
-const menu = new Menu();
+const menu = new Menu()
 forEach(configs, conf => {
-  menu.append(new MenuItem(conf));
-});
+  menu.append(new MenuItem(conf))
+})
 
 module.exports = event => {
-  const win = BrowserWindow.fromWebContents(event.sender);
-  menu.popup(win);
-};
+  const win = BrowserWindow.fromWebContents(event.sender)
+  menu.popup(win)
+}

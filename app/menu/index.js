@@ -36,12 +36,12 @@ const createMenu = ({
         {
           label: '打开开发者工具',
           click(item, win, event) {
-            win.webContents.openDevTools({ mode: 'right' });
+            win.webContents.openDevTools({ mode: 'right' })
           },
         },
       ],
     },
-  ];
-};
+  ]
+}
 
-module.exports = createMenu;
+module.exports = createMenu

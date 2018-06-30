@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Settings, Home, ChildCare } from '@material-ui/icons';
-// import { Tooltip } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { Settings, Home, ChildCare } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
-import ipc from '../../libs/ipc';
+import ipc from '../../libs/ipc'
 
 /**
  * 格式化图标组件
@@ -24,18 +23,18 @@ const styledIcon = (Comp, { title, enterDelay = 1000 }) => {
         color: rgb(255, 255, 255);
       }
     }
-  `;
+  `
   return props => (
     <CompWrap title={title}>
       <Comp {...props} style={{ fontSize: 32 }} />
     </CompWrap>
-  );
-};
+  )
+}
 
 class LeftNav extends Component {
   openSettingMenu = () => {
-    ipc.send('open-setting-menu');
-  };
+    ipc.send('open-setting-menu')
+  }
 
   render() {
     const FlexContainer = styled.div`
@@ -45,15 +44,15 @@ class LeftNav extends Component {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-    `;
+    `
     const StyleFlexDiv = styled.div`
       width: 78px;
       display: flex;
       flex-direction: column;
-    `;
-    const StyledSettings = styledIcon(Settings, { title: '设置' });
-    const StyledHome = styledIcon(Home, { title: '主页' });
-    const StyledChildCare = styledIcon(ChildCare, { title: '欢迎页' });
+    `
+    const StyledSettings = styledIcon(Settings, { title: '设置' })
+    const StyledHome = styledIcon(Home, { title: '主页' })
+    const StyledChildCare = styledIcon(ChildCare, { title: '欢迎页' })
 
     return (
       <FlexContainer>
@@ -70,8 +69,8 @@ class LeftNav extends Component {
           <StyledSettings onClick={this.openSettingMenu} />
         </StyleFlexDiv>
       </FlexContainer>
-    );
+    )
   }
 }
 
-export default LeftNav;
+export default LeftNav

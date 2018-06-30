@@ -1,17 +1,17 @@
-const { app, BrowserWindow, Menu } = require('electron');
-const { isDev, appUrl } = require('./libs/constant');
-const buildMenu = require('./menu');
-const createWindow = require('./libs/createWindow');
+const { app, BrowserWindow, Menu } = require('electron')
+const { isDev, appUrl } = require('./libs/constant')
+const buildMenu = require('./menu')
+const createWindow = require('./libs/createWindow')
 
 /**
  * 配置ipc
  */
-require('./ipc')();
+require('./ipc')()
 
 /**
  * 调试相关
  */
-isDev && require('electron-debug')({ enabled: true, showDevTools: false });
+isDev && require('electron-debug')({ enabled: true, showDevTools: false })
 
 /**
  * 配置菜单
@@ -22,10 +22,10 @@ function createMenu() {
       appName: app.getName(),
     },
     method: {},
-  });
+  })
 
-  const menu = Menu.buildFromTemplate(menuTemplate);
-  Menu.setApplicationMenu(menu);
+  const menu = Menu.buildFromTemplate(menuTemplate)
+  Menu.setApplicationMenu(menu)
 }
 
 /**
@@ -35,12 +35,12 @@ function createDevTools() {
   const {
     default: installExtension,
     REACT_DEVELOPER_TOOLS,
-    MOBX_DEVTOOLS,
-  } = require('electron-devtools-installer');
-  const devtronExtension = require('devtron');
-  devtronExtension.install();
-  installExtension(REACT_DEVELOPER_TOOLS);
-  installExtension(MOBX_DEVTOOLS);
+    REDUX_DEVTOOLS,
+  } = require('electron-devtools-installer')
+  const devtronExtension = require('devtron')
+  devtronExtension.install()
+  installExtension(REACT_DEVELOPER_TOOLS)
+  installExtension(REDUX_DEVTOOLS)
 }
 
 /**
@@ -57,25 +57,25 @@ app.on('ready', () => {
   createWindow(
     { url: appUrl, isGlobal: true },
     { titleBarStyle: 'hiddenInset', frame: false }
-  );
-  setMainListeners();
-  createMenu();
+  )
+  setMainListeners()
+  createMenu()
   if (isDev) {
-    createDevTools();
+    createDevTools()
   }
-});
+})
 
 app.on('window-all-closed', function() {
   if (process.platform !== 'darwin') {
-    app.quit();
+    app.quit()
   }
-});
+})
 
 app.on('activate', function() {
   if (mainWindow === null) {
     createWindow(
       { url: appUrl, isGlobal: true },
       { titleBarStyle: 'hiddenInset', frame: false }
-    );
+    )
   }
-});
+})

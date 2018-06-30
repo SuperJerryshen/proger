@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
 class TopBar extends Component {
   render() {
@@ -19,13 +19,13 @@ class TopBar extends Component {
       font-size: 14px;
       -webkit-app-region: drag;
       user-select: none;
-    `;
+    `
     return (
       <Header>
         <div>{this.props.title}</div>
       </Header>
-    );
+    )
   }
 }
 
-export default TopBar;
+export default TopBar

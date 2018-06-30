@@ -1,5 +1,5 @@
-const createWindow = require('../../libs/createWindow');
+const createWindow = require('../../libs/createWindow')
 
 module.exports = (e, { url }) => {
-  createWindow({ url, node: false });
-};
+  createWindow({ url, node: false })
+}

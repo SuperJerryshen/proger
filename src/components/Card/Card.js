@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Card } from '@material-ui/core';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { Card } from '@material-ui/core'
+import styled from 'styled-components'
 
 const StyledCard = styled(Card)`
   && {
@@ -15,6 +15,6 @@ const StyledCard = styled(Card)`
       transform: translate(0, -2px);
     }
   }
-`;
+`
 
-export default Card;
+export default Card

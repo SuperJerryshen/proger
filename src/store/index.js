@@ -4,12 +4,7 @@ import counter from './counter';
 export default () => {
   return init({
     models: {
-      // counter,
-      test: {
-        state: {
-          value: 1,
-        },
-      },
+      counter,
     },
   });
 };

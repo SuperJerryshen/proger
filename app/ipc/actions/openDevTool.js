@@ -1,3 +1,3 @@
 module.exports = (event, config = { mode: 'right' }) => {
-  event.sender.openDevTool(config);
-};
+  event.sender.openDevTool(config)
+}

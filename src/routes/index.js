@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import Loadable from 'react-loadable'
 
-import HelloProger from '../components/HelloProger';
-import Home from '../views/Home';
-import Main from '../containers/Main';
+import Main from '../containers/Main'
+
+const loading = () => <div />
+const Home = Loadable({
+  loader: () => import('./Home'),
+  loading,
+})
+const HelloProger = Loadable({
+  loader: () => import('../components/HelloProger'),
+  loading,
+})
 
 class Routes extends Component {
   render() {
@@ -16,8 +25,8 @@ class Routes extends Component {
           </Switch>
         </Main>
       </Router>
-    );
+    )
   }
 }
 
-export default Routes;
+export default Routes

@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Grid,
   CardContent,
   CardActions,
   Typography,
   Button,
-} from '@material-ui/core';
-import styled from 'styled-components';
-import Card from '../../components/Card';
+} from '@material-ui/core'
+import styled from 'styled-components'
+import Card from '../../components/Card'
 
 class Home extends Component {
   handleClick = (...params) => {
-    console.log(params);
-  };
+    console.log(params)
+  }
 
   render() {
     return (
@@ -66,8 +66,8 @@ class Home extends Component {
           </Grid>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

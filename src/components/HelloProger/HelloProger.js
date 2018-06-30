@@ -1,14 +1,14 @@
 // 此组件仅用做测试
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
-import { Face } from '@material-ui/icons';
-import Img from '../Img';
-import styled from 'styled-components';
-import ipc from '../../libs/ipc';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '@material-ui/core'
+import { Face } from '@material-ui/icons'
+import Img from '../Img'
+import styled from 'styled-components'
+import ipc from '../../libs/ipc'
 
-import logo from '../../assets/logo.svg';
-import './HelloProger.css';
+import logo from '../../assets/logo.svg'
+import './HelloProger.css'
 
 const StyledButton = styled(Button)`
   && {
@@ -21,42 +21,40 @@ const StyledButton = styled(Button)`
     box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
     margin-right: 12px;
   }
-`;
+`
 
 const StyledFace = styled(({ color, ...other }) => <Face {...other} />)`
   color: ${props => props.color};
-`;
+`
 
 const StyledImage = styled(Img)`
   height: 80px;
   width: 80px;
-`;
+`
 
 class HelloProger extends Component {
-  state = {};
-
   handleIpcSend = () => {
     ipc.once('get-times-response', (e, obj) => {
-      console.log(obj);
-    });
-    ipc.send('get-times', '我在向主线程请求现在的时间');
-  };
+      console.log(obj)
+    })
+    ipc.send('get-times', '我在向主线程请求现在的时间')
+  }
 
   openNewWindow = () => {
     ipc.send('create-web-window', {
       url: 'http://mall.qa.medlinker.com',
-    });
-  };
+    })
+  }
 
   selectDir = () => {
     ipc.once('select-dir-response', (e, payload) => {
-      console.log(payload);
-    });
-    ipc.send('select-dir');
-  };
+      console.log(payload)
+    })
+    ipc.send('select-dir')
+  }
 
   render() {
-    const { count, addCount, asyncAddCount } = this.props;
+    const { count, addCount, asyncAddCount } = this.props
     return (
       <div className="App">
         <header className="App-header">
@@ -83,8 +81,8 @@ class HelloProger extends Component {
           <StyledButton onClick={this.selectDir}>选择目录</StyledButton>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default HelloProger;
+export default HelloProger

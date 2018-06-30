@@ -1,1 +1,1 @@
-export default from './XTerm';
+export default from './XTerm'

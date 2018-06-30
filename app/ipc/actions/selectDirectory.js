@@ -1,4 +1,4 @@
-const { dialog } = require('electron');
+const { dialog } = require('electron')
 
 module.exports = event => {
   dialog.showOpenDialog(
@@ -8,7 +8,7 @@ module.exports = event => {
     (filePaths, bookmarks) => {
       event.sender.send('select-dir-response', {
         filePaths,
-      });
+      })
     }
-  );
-};
+  )
+}

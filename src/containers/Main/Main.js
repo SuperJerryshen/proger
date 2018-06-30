@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import LeftNav from '../LeftNav';
-import TopBar from '../../components/TopBar';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import LeftNav from '../LeftNav'
+import TopBar from '../../components/TopBar'
 
 const FlexContainer = styled.div`
   display: flex;
   height: 100vh;
   width: 100vw;
-`;
+`
 
 const FlexAuto = styled.div`
   display: flex;
@@ -16,16 +16,16 @@ const FlexAuto = styled.div`
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-`;
+`
 
 const ContentWrap = styled.div`
   flex: 1;
   overflow-y: auto;
-`;
+`
 
 class Main extends Component {
   render() {
-    const { children } = this.props;
+    const { children } = this.props
     return (
       <FlexContainer>
         <LeftNav />
@@ -34,8 +34,8 @@ class Main extends Component {
           <ContentWrap>{children}</ContentWrap>
         </FlexAuto>
       </FlexContainer>
-    );
+    )
   }
 }
 
-export default Main;
+export default Main

@@ -1,3 +1,4 @@
+// @flow
 // 此组件仅用做测试
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -9,6 +10,12 @@ import ipc from '../../libs/ipc'
 
 import logo from '../../assets/logo.svg'
 import './HelloProger.css'
+
+type Props = {
+  count: number,
+  addCount(num: number): null,
+  asyncAddCount(num: number): null,
+}
 
 const StyledButton = styled(Button)`
   && {
@@ -32,7 +39,7 @@ const StyledImage = styled(Img)`
   width: 80px;
 `
 
-class HelloProger extends Component {
+class HelloProger extends Component<Props> {
   handleIpcSend = () => {
     ipc.once('get-times-response', (e, obj) => {
       console.log(obj)

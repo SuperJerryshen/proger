@@ -1,8 +1,12 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import LeftNav from '../LeftNav'
 import TopBar from '../../components/TopBar'
-import { omit } from 'lodash'
+
+type Props = {
+  children: {},
+}
 
 const FlexContainer = styled.div`
   display: flex;
@@ -24,7 +28,7 @@ const ContentWrap = styled.div`
   overflow-y: auto;
 `
 
-class Main extends Component {
+class Main extends Component<Props> {
   render() {
     const { children } = this.props
     return (

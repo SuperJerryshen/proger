@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Settings, Home, ChildCare } from '@material-ui/icons'
@@ -5,33 +6,36 @@ import { Link, withRouter } from 'react-router-dom'
 
 import ipc from '../../libs/ipc'
 
+type Props = {}
+
+const CompWrap = styled.div`
+  && {
+    color: rgb(215, 218, 224);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
+  }
+`
 /**
  * 格式化图标组件
  * @param {*} Comp
  * @param {*} param1
  */
-const styledIcon = (Comp, { title, path = '' }) => {
-  const CompWrap = styled.div`
-    && {
-      color: rgb(215, 218, 224);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 64px;
-      &:hover {
-        color: rgb(255, 255, 255);
-      }
-    }
-  `
-  return props => (
+const styledIcon = (Comp, { title }) => {
+  const genComp = props => (
     <CompWrap title={title}>
       <Comp {...props} style={{ fontSize: 32 }} />
     </CompWrap>
   )
+  return genComp
 }
 
-class LeftNav extends Component {
+class LeftNav extends Component<Props> {
   openSettingMenu = () => {
     ipc.send('open-setting-menu')
   }

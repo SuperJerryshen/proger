@@ -1,5 +1,13 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
@@ -14,12 +22,16 @@
     "es6": true,
     "jest": true
   },
-  "parser": "babel-eslint",
   "rules": {
     "react/prop-types": "ignore",
     "no-console": "warn",
     "no-extra-semi": "error",
     "semi": ["error", "never"],
     "semi-style": ["error", "last"]
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
   }
 }

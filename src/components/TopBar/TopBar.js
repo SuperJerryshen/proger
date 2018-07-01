@@ -1,7 +1,12 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-class TopBar extends Component {
+type Props = {
+  title: string,
+}
+
+class TopBar extends Component<Props> {
   render() {
     const Header = styled.div`
       display: flex;

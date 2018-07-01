@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/react-router-dom/.*
+.*/node_modules/styled-components/.*
+.*/node_modules/jss/.*
+.*/node_modules/react-popper/.*
+
+[include]
+
+[libs]
+flow-typed
+
+[lints]
+
+[options]
+module.name_mapper='(styled-components)' -> 'empty/object'

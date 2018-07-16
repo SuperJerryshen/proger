@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import LeftNav from '../LeftNav'
 import TopBar from '../../components/TopBar'
-import { omit } from 'lodash'
 
 const FlexContainer = styled.div`
   display: flex;

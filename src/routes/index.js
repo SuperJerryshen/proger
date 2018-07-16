@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
 
 import Main from '../containers/Main'
@@ -23,6 +23,7 @@ const MainRoute = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/hello" component={HelloProger} />
+      <Route path="/gitlab/login" component={GitlabLogin} />
     </Switch>
   </Main>
 )

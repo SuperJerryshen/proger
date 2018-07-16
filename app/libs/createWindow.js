@@ -15,17 +15,19 @@ module.exports = ({ url, node = true, isGlobal = false }, config = null) => {
     config
   )
   if (!windowConfig.webPreferences) {
-    windowConfig.webPreferences = {}
+    windowConfig.webPreferences = {
+      webSecurity: false,
+    }
   }
   // 配置window是否可用node相关模块
   windowConfig.webPreferences.nodeIntegration = node
 
   if (isGlobal) {
     global.mainWindow = new BrowserWindow(windowConfig)
-    mainWindow.loadURL(url)
-    mainWindow.on('closed', function() {
+    global.mainWindow.loadURL(url)
+    global.mainWindow.on('closed', function() {
       // 关闭后，保留应用在dock栏
-      mainWindow = null
+      global.mainWindow = null
     })
   } else {
     let win = new BrowserWindow(windowConfig)

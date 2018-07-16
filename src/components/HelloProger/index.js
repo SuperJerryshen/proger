@@ -1,6 +1,5 @@
 import HelloProger from './HelloProger'
 import { connect } from 'react-redux'
-import React from 'react'
 
 const mapState = state => {
   return {
